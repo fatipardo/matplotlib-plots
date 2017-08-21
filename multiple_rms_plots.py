@@ -2,7 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plotrms(rmsfile, peptidepath):
-    """Plot multiple RMSD calculations, input rms.xvg from 'gmx rms', output plot with 10 rms calculations"""
+    """Plot multiple RMSD calculations, 
+    input: multiple (10) rms.xvg output from 'gmx rms'
+    output: plot with overlay 10 rms calculations
+    example:
+    peptidepath='/Users/User/testplots/' #directory where plot will be printed
+    rmsfiles='/Users/User/Results/' #directory where the 10 xvg files created from 'gmx rms' are stored
+    plotrms(rmsfiles, peptidepath)
+    
+    """
     
     PlotX=[]
     PlotY=[]
@@ -10,7 +18,7 @@ def plotrms(rmsfile, peptidepath):
     peptide=peptidepath+'.png' # Path where plots will be saved and figure format
     
     for run in xrange(10):
-        nfile=rmsfile+'rms_alpha_run%d.xvg' % run # path and name of the xvg file created by 'gmx rms'
+        nfile=rmsfile+'rms_alpha_run%d.xvg' % run # path and name of the 10 rms_alpha_run#.xvg files created by 'gmx rms'
         print nfile
         ramafile=np.loadtxt(nfile)
         PlotX.append(ramafile[:,0])
